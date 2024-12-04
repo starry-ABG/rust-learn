@@ -28,3 +28,41 @@ fn b1() {
         // println!("{}", s);
     }
 }
+
+// 题目1：以下代码能编译通过吗？
+fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
+    let result = String::from("really long string");
+    &result
+ }
+ 
+ // 题目2：以下代码能编译通过吗？
+ fn mai() {
+    let r;
+    {
+        let x = 5;
+        r = &x;
+    }
+    println!("{}", r);
+ }
+ 
+ // 题目3：以下代码能编译通过吗？
+ struct Config<'a> {
+    name: &'a str,
+    data: String
+ }
+ 
+ fn process_config<'a>(cfg: &'a mut Config<'a>) {
+    let new_name = String::from("new");
+    cfg.name = &new_name;
+ }
+ 
+ // 题目4：以下代码能编译通过吗？
+ fn mai2() {
+    let mut data = String::from("hello");
+    let r = &data;
+    {
+        let mut_r = &mut data;
+        *mut_r = String::from("world");
+    }
+    println!("{}", r);
+ }
