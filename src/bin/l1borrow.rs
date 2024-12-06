@@ -30,39 +30,53 @@ fn b1() {
 }
 
 // 题目1：以下代码能编译通过吗？
-fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
-    let result = String::from("really long string");
-    &result
- }
+// fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
+//     let result = String::from("really long string");
+//     &result
+//  }
  
- // 题目2：以下代码能编译通过吗？
- fn mai() {
-    let r;
-    {
-        let x = 5;
-        r = &x;
-    }
-    println!("{}", r);
- }
+//  // 题目2：以下代码能编译通过吗？
+//  fn mai() {
+//     let r;
+//     {
+//         let x = 5;
+//         r = &x;
+//     }
+//     println!("{}", r);
+//  }
  
- // 题目3：以下代码能编译通过吗？
- struct Config<'a> {
-    name: &'a str,
-    data: String
- }
+//  // 题目3：以下代码能编译通过吗？
+//  struct Config<'a> {
+//     name: &'a str,
+//     data: String
+//  }
  
- fn process_config<'a>(cfg: &'a mut Config<'a>) {
-    let new_name = String::from("new");
-    cfg.name = &new_name;
- }
+//  fn process_config<'a>(cfg: &'a mut Config<'a>) {
+//     let new_name = String::from("new");
+//     cfg.name = &new_name;
+//  }
  
- // 题目4：以下代码能编译通过吗？
- fn mai2() {
-    let mut data = String::from("hello");
-    let r = &data;
-    {
-        let mut_r = &mut data;
-        *mut_r = String::from("world");
-    }
-    println!("{}", r);
+//  // 题目4：以下代码能编译通过吗？
+//  fn mai2() {
+//     let mut data = String::from("hello");
+//     let r = &data;
+//     {
+//         let mut_r = &mut data;
+//         *mut_r = String::from("world");
+//     }
+//     println!("{}", r);
+//  }
+
+ fn reference() {
+    let mut s1 = String::from("hello");
+    let mut s2 = String::from("world");
+    // it's ok. 
+    let mut a: &mut String = &mut s1;
+    // &mut String代表a是一个可变引用，指向一个String，可以通过这个可变引用来修改String的值
+    a.push_str(" World");
+    // mut a代表a这个变量绑定本身是可变的。也就是说之后可以对a进行重新赋值，让a指向别的String的可变引用
+    a = &mut s2;
+
+    // 
+
  }
