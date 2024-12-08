@@ -1,3 +1,5 @@
+use std::ops::Deref;
+
 
 struct Ref {}
 
@@ -22,6 +24,30 @@ fn call1() {
     rf.r();
 }
 
+fn pp(c: &String) {
+    println!("{}", c);
+}
+
+fn ppp(c: &str) {
+    println!("{}", c);
+}
+fn auto_deref() {
+    let c = Box::new(String::new());
+    // 注意看，pp函数参数类型是&String
+    // &c的类型是&Box<String>
+    // 说明虽然是box的引用，但是通过自动解引用，成为了&String
+    // 所以在函数值传递的时候也存在自动解引用
+    pp(&c);
+    // 下面的调用将不能编译通过，所以如果传递的值不是引用则不会发生
+    // 所以没有自动借用。
+    // pp(c);
+    // ppp的参数类型是&str
+    // 这里依然可以编译通过的原因在于String类型实现了Deref，指向str
+    // 所以如果函数只是需要一个字符串的引用，那么用&str更方便
+    // 因为它可以适应&String和&str两种情况
+    ppp(&c);
+
+}
 
 fn main () {
 
