@@ -25,7 +25,7 @@ fn main() {
 
 
     for i in 0..=2 {
-        data.push(i);
+        // data.push(i);
         data_vec.push(i);
     }
 }

@@ -3,5 +3,13 @@
 version = 3
 
 [[package]]
-name = "rust-learn"
+name = "axum-learn"
+version = "0.1.0"
+
+[[package]]
+name = "core"
+version = "0.1.0"
+
+[[package]]
+name = "sea-orm-learn"
 version = "0.1.0"

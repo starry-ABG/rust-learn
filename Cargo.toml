@@ -1,6 +1,3 @@
-[package]
-name = "rust-learn"
-version = "0.1.0"
-edition = "2021"
-
-[dependencies]
+[workspace]
+members = [ "app/axum-learn","core", "crate/sea-orm-learn"]
+resolver = "2"
