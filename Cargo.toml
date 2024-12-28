@@ -1,3 +1,3 @@
 [workspace]
-members = [ "app/axum-learn","core", "crate/sea-orm-learn"]
+members = [ "app/axum-learn","core", "crate/sea-orm-learn", "crate/sea-orm-learn/migration", "crate/tracingl"]
 resolver = "2"
